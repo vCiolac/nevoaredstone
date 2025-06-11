@@ -14,11 +14,10 @@ export default function ParallaxLayer({
 }) {
   const containerRef = useRef<HTMLDivElement>(null);
 
-  const [copyCount, setCopyCount]   = useState(0);   // quantas cópias preciso
-  const [scaledW, setScaledW]       = useState(0);   // largura já escalada
-  const [scaledH, setScaledH]       = useState(0);   // = 100vh
+  const [copyCount, setCopyCount] = useState(0);
+  const [scaledW, setScaledW] = useState(0);
+  const [scaledH, setScaledH] = useState(0);
 
-  /* 1) Carrega a imagem e calcula escala */
   useEffect(() => {
     const img = new window.Image();
     img.src = src;
@@ -36,7 +35,6 @@ export default function ParallaxLayer({
     };
   }, [src]);
 
-  /* 2) Loop de animação */
   useEffect(() => {
     if (!scaledW || !copyCount) return;
 
@@ -77,18 +75,17 @@ export default function ParallaxLayer({
             height: `${scaledH}px`,
           }}
         >
-          {/* Next Image no modo fill — agora com proporção certa */}
           <Image
             src={src}
             alt={`parallax-${i}`}
             fill
             style={{
-              objectFit: "cover",     // cobre o bloco sem distorcer
+              objectFit: "cover",
               imageRendering: "pixelated",
             }}
             priority
-            sizes="100vh"            // largura em função da altura
-            unoptimized              // evita transformações do Next
+            sizes="100vh"
+            unoptimized
             draggable={false}
           />
         </div>

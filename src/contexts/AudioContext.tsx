@@ -2,10 +2,12 @@
 
 import { createContext, useContext, useEffect, useRef, useState } from "react";
 import { Howl } from "howler";
+import { OrakReactionType } from "@/components/OrakCharacter";
 
 type AudioContextType = {
   playClick: () => void;
   playResult: () => void;
+  playOrakReaction: (type: OrakReactionType) => void;
   isMuted: boolean;
   toggleMute: () => void;
 };
@@ -20,26 +22,28 @@ export const AudioProvider = ({ children }: { children: React.ReactNode }) => {
   const bgSound = useRef<Howl | null>(null);
   const clickSound = useRef<Howl | null>(null);
   const resultSound = useRef<Howl | null>(null);
+  const orakSounds = useRef<Record<OrakReactionType, Howl>>({
+    normal: new Howl({ src: ["/sounds/orak-normal.mp3"], volume: 0.6 }),
+    happy: new Howl({ src: ["/sounds/orak-happy.mp3"], volume: 0.6 }),
+    sad: new Howl({ src: ["/sounds/orak-sad.mp3"], volume: 0.6 }),
+  });
 
-  // Setup dos sons
   useEffect(() => {
     bgSound.current = new Howl({
       src: ["/sounds/bg-music.mp3"],
-      volume: 0.2,
+      volume: 0.5,
       loop: true,
-      onload: () => {
-        setCanPlay(true); // agora está pronto para tocar
-      },
+      onload: () => setCanPlay(true),
     });
 
     clickSound.current = new Howl({
       src: ["/sounds/click.mp3"],
-      volume: 0.3,
+      volume: 0.6,
     });
 
     resultSound.current = new Howl({
       src: ["/sounds/result.mp3"],
-      volume: 0.25,
+      volume: 0.55,
     });
 
     const handleFirstInteraction = () => {
@@ -57,14 +61,19 @@ export const AudioProvider = ({ children }: { children: React.ReactNode }) => {
       window.removeEventListener("keydown", handleFirstInteraction);
       bgSound.current?.stop();
     };
-  }, []);
+  }, [hasInteracted]);
 
-  // Quando puder tocar e já interagiu, toca de fato
   useEffect(() => {
-    if (hasInteracted && canPlay && bgSound.current && !bgSound.current.playing()) {
+    if (
+      hasInteracted &&
+      canPlay &&
+      bgSound.current &&
+      !bgSound.current.playing() &&
+      !isMuted
+    ) {
       bgSound.current.play();
     }
-  }, [hasInteracted, canPlay]);
+  }, [hasInteracted, canPlay, isMuted]);
 
   const toggleMute = () => {
     const newMuted = !isMuted;
@@ -74,8 +83,13 @@ export const AudioProvider = ({ children }: { children: React.ReactNode }) => {
       bgSound.current?.pause();
     } else {
       if (!hasInteracted) return;
-
       bgSound.current?.play();
+    }
+  };
+
+  const playOrakReaction = (type: OrakReactionType) => {
+    if (!isMuted) {
+      orakSounds.current[type]?.play();
     }
   };
 
@@ -84,6 +98,7 @@ export const AudioProvider = ({ children }: { children: React.ReactNode }) => {
       value={{
         playClick: () => clickSound.current?.play(),
         playResult: () => resultSound.current?.play(),
+        playOrakReaction,
         isMuted,
         toggleMute,
       }}
