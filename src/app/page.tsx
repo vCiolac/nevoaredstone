@@ -1,8 +1,8 @@
 "use client";
 
 import AboutSection from "@/components/AboutSection";
+import QuizDropdown from "@/components/QuizDropdown";
 import { motion } from "framer-motion";
-import Link from "next/link";
 import { useEffect } from "react";
 
 export default function Home() {
@@ -31,7 +31,7 @@ export default function Home() {
             transition={{ duration: 0.8 }}
             className="text-3xl md:text-5xl font-extrabold mb-4"
           >
-            Qual personagem da Névoa Redstone é você?
+            Descubra seu lugar no mundo da Névoa Redstone
           </motion.h1>
 
           <motion.p
@@ -40,27 +40,10 @@ export default function Home() {
             transition={{ delay: 0.5, duration: 0.8 }}
             className="text-md md:text-lg max-w-2xl mb-8"
           >
-            Entre nesse universo místico e responda o quiz para descobrir sua alma mágica.
+            Encare os desafios de um universo mágico e descubra qual personagem, instrumento ou poder vibra com sua essência.
           </motion.p>
           <div className="flex flex-col sm:flex-row gap-4">
-            <Link href="/quiz">
-              <motion.div
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                className="bg-gradient-to-r from-amber-400 to-amber-500 text-black font-bold py-4 px-8 rounded-full shadow-xl"
-              >
-                Quiz de Personagem
-              </motion.div>
-            </Link>
-            <Link href="/quiz-instrumento">
-              <motion.div
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                className="bg-gradient-to-r from-amber-400 to-amber-500 text-black font-bold py-4 px-8 rounded-full shadow-xl"
-              >
-                Quiz de Instrumento
-              </motion.div>
-            </Link>
+            <QuizDropdown />
           </div>
         </div>
       </section>

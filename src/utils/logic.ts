@@ -1,4 +1,4 @@
-import { Character, Option } from "./questions";
+import { Character, Option } from "@/types/types";
 
 export function calcularResultado(respostas: Option[]): Character {
   const score: Record<Character, number> = {
