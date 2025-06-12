@@ -182,6 +182,120 @@ export const questions: Question[] = [
         }
       }
     ]
+  },
+  {
+    id: 3,
+    orakAsk: "Diante de uma escolha difícil, o que você costuma seguir?",
+    options: [
+      {
+        text: "Meu instinto, mesmo que pareça arriscado",
+        points: { Raiat: 2, Flama: 1, Togur: 1 },
+        orakReaction: {
+          expression: "intrigued",
+          phrase: "Instinto é a bússola daqueles que confiam na própria essência.",
+        },
+      },
+      {
+        text: "Minha lógica, sempre buscando o caminho mais seguro",
+        points: { Thalris: 2, Nebulosa: 1, Astrid: 1 },
+        orakReaction: {
+          expression: "thoughtful",
+          phrase: "Pensar antes de agir é a arma dos sábios... e dos sobreviventes.",
+        },
+      },
+      {
+        text: "Minha vontade de ajudar os outros, mesmo me sacrificando",
+        points: { Yara: 2, ElkinaRei: 1, Lipa: 1 },
+        orakReaction: {
+          expression: "sad",
+          phrase: "Corações altruístas brilham... mesmo quando sofrem em silêncio.",
+        },
+      },
+      {
+        text: "O que for mais útil e eficaz no momento",
+        points: { Peynir: 2, Alaz: 1, Andrômeda: 1 },
+        orakReaction: {
+          expression: "angry",
+          phrase: "Frieza e precisão... às vezes, são necessárias. Mas não sem custo.",
+        },
+      },
+    ],
+  },
+  {
+    id: 4,
+    orakAsk: "Quando você entra em um novo grupo, como costuma se comportar?",
+    options: [
+      {
+        text: "Me apresento com confiança e já assumo responsabilidades",
+        points: { ElkinaRei: 2, Raiat: 1, Flama: 1 },
+        orakReaction: {
+          expression: "happy",
+          phrase: "Ah! Um espírito que não teme a liderança... inspirador!",
+        },
+      },
+      {
+        text: "Observo em silêncio até entender melhor cada pessoa",
+        points: { Thalris: 2, Astrid: 1, Nebulosa: 1 },
+        orakReaction: {
+          expression: "thoughtful",
+          phrase: "Ouvir antes de falar é a arte dos mais velhos e dos mais sábios.",
+        },
+      },
+      {
+        text: "Tento alegrar o grupo com ideias criativas",
+        points: { Alaz: 2, Andrômeda: 1, Lipa: 1 },
+        orakReaction: {
+          expression: "happy",
+          phrase: "Um sopro de energia pode transformar até o mais escuro salão!",
+        },
+      },
+      {
+        text: "Fico na retaguarda, pronto para agir se necessário",
+        points: { Togur: 2, Peynir: 1, Yara: 1 },
+        orakReaction: {
+          expression: "intrigued",
+          phrase: "Há valor na presença silenciosa... e poder, se for despertada.",
+        },
+      },
+    ],
+  },
+  {
+    id: 5,
+    orakAsk: "Se você fosse um guardião da Névoa, qual seria seu maior desafio?",
+    options: [
+      {
+        text: "Manter a paz entre os reinos",
+        points: { ElkinaRei: 2, Yara: 1, Thalris: 1 },
+        orakReaction: {
+          expression: "sad",
+          phrase: "A paz é frágil como cristal... e dolorosa de preservar.",
+        },
+      },
+      {
+        text: "Lidar com a corrupção interna e decisões difíceis",
+        points: { Peynir: 2, Nebulosa: 1, Raiat: 1 },
+        orakReaction: {
+          expression: "angry",
+          phrase: "Corromper a Névoa é tocar o caos... e enfrentá-lo exige firmeza.",
+        },
+      },
+      {
+        text: "Proteger os inocentes a qualquer custo",
+        points: { Flama: 2, Astrid: 1, Togur: 1 },
+        orakReaction: {
+          expression: "happy",
+          phrase: "Você tem a alma de um escudo. Nobre... e necessária.",
+        },
+      },
+      {
+        text: "Decifrar os segredos esquecidos da magia",
+        points: { Andrômeda: 2, Lipa: 1, Alaz: 1 },
+        orakReaction: {
+          expression: "thoughtful",
+          phrase: "Mistérios antigos não se revelam com pressa... nem com medo.",
+        },
+      },
+    ],
   }
 ];
 

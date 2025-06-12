@@ -23,29 +23,29 @@ export const AudioProvider = ({ children }: { children: React.ReactNode }) => {
   const clickSound = useRef<Howl | null>(null);
   const resultSound = useRef<Howl | null>(null);
   const orakSounds = useRef<Record<OrakReactionType, Howl>>({
-    happy: new Howl({ src: ["/sounds/orak/happy.mp3"], volume: 0.6 }),
-    sad: new Howl({ src: ["/sounds/orak/sad.mp3"], volume: 0.6 }),
-    angry: new Howl({ src: ["/sounds/orak/angry.mp3"], volume: 0.6 }),
-    thoughtful: new Howl({ src: ["/sounds/orak/thoughtful.mp3"], volume: 0.6 }),
-    intrigued: new Howl({ src: ["/sounds/orak/intrigued.mp3"], volume: 0.6 }),
+    happy: new Howl({ src: ["/sounds/orak/happy.mp3"], volume: 0.3 }),
+    sad: new Howl({ src: ["/sounds/orak/sad.mp3"], volume: 0.3 }),
+    angry: new Howl({ src: ["/sounds/orak/angry.mp3"], volume: 0.3 }),
+    thoughtful: new Howl({ src: ["/sounds/orak/thoughtful.mp3"], volume: 0.3 }),
+    intrigued: new Howl({ src: ["/sounds/orak/intrigued.mp3"], volume: 0.3 }),
   });
 
   useEffect(() => {
     bgSound.current = new Howl({
       src: ["/sounds/bg-music.mp3"],
-      volume: 0.5,
+      volume: 0.2,
       loop: true,
       onload: () => setCanPlay(true),
     });
 
     clickSound.current = new Howl({
       src: ["/sounds/click.mp3"],
-      volume: 0.6,
+      volume: 0.3,
     });
 
     resultSound.current = new Howl({
       src: ["/sounds/result.mp3"],
-      volume: 0.55,
+      volume: 0.25,
     });
 
     const handleFirstInteraction = () => {

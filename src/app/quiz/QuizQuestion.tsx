@@ -14,7 +14,7 @@ export default function QuizQuestion({ question, onEscolha }: QuizQuestionProps)
           <button
             key={idx}
             onClick={() => onEscolha(opcao)}
-            className="bg-amber-800 hover:bg-fuchsia-800 py-3 px-6 rounded-xl transition-all text-lg font-medium"
+            className="bg-amber-800 hover:bg-fuchsia-900 py-3 px-6 rounded-xl transition-all text-lg font-medium"
           >
             {opcao.text}
           </button>
