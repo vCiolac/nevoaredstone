@@ -42,15 +42,26 @@ export default function Home() {
           >
             Entre nesse universo místico e responda o quiz para descobrir sua alma mágica.
           </motion.p>
-          <Link href="/quiz">
-            <motion.div
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              className="bg-gradient-to-r from-amber-400 to-amber-500 text-black font-bold py-4 px-8 rounded-full shadow-xl"
-            >
-              Começar o Quiz
-            </motion.div>
-          </Link>
+          <div className="flex flex-col sm:flex-row gap-4">
+            <Link href="/quiz">
+              <motion.div
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                className="bg-gradient-to-r from-amber-400 to-amber-500 text-black font-bold py-4 px-8 rounded-full shadow-xl"
+              >
+                Quiz de Personagem
+              </motion.div>
+            </Link>
+            <Link href="/quiz-instrumento">
+              <motion.div
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                className="bg-gradient-to-r from-amber-400 to-amber-500 text-black font-bold py-4 px-8 rounded-full shadow-xl"
+              >
+                Quiz de Instrumento
+              </motion.div>
+            </Link>
+          </div>
         </div>
       </section>
 
