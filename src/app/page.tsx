@@ -29,7 +29,7 @@ export default function Home() {
             initial={{ scale: 0.9, opacity: 0 }}
             animate={{ scale: 1, opacity: 1 }}
             transition={{ duration: 0.8 }}
-            className="text-4xl md:text-5xl font-extrabold mb-4"
+            className="font-bebas text-4xl md:text-5xl font-extrabold mb-4"
           >
             Descubra seu lugar no mundo da Névoa Redstone
           </motion.h1>
@@ -38,7 +38,7 @@ export default function Home() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.5, duration: 0.8 }}
-            className="text-lg md:text-lg max-w-2xl mb-8"
+            className="font-dm text-lg md:text-lg max-w-2xl mb-8"
           >
             Encare os desafios de um universo mágico e descubra qual personagem, instrumento ou poder vibra com sua essência.
           </motion.p>

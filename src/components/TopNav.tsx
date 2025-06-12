@@ -92,7 +92,11 @@ export default function TopNav() {
           >
             {isMuted ? <VolumeX size={20} /> : <Volume2 size={20} />}
           </button>
-          <button className="md:hidden p-2" onClick={() => setMenuOpen((prev) => !prev)}>
+          <button
+            className="md:hidden p-2"
+            onClick={() => setMenuOpen((prev) => !prev)}
+            aria-label={menuOpen ? "Fechar menu de navegação" : "Abrir menu de navegação"}
+          >
             {menuOpen ? <X size={22} /> : <Menu size={22} />}
           </button>
         </div>

@@ -42,14 +42,20 @@ export default function QuizPage() {
 
   const handleEscolha = (opcao: Option) => {
     playClick();
-    playOrakReaction(opcao.orakReaction.expression);
-    setCurrentOption(opcao);
 
-    const novasRespostas = [...respostas];
-    novasRespostas[step] = opcao;
-    setRespostas(novasRespostas);
+    setTimeout(() => {
+      playOrakReaction(opcao.orakReaction.expression);
+    }, 200);
 
-    setView("reaction");
+    setTimeout(() => {
+      setCurrentOption(opcao);
+
+      const novasRespostas = [...respostas];
+      novasRespostas[step] = opcao;
+      setRespostas(novasRespostas);
+
+      setView("reaction");
+    }, 500);
   };
 
   const avancar = () => {

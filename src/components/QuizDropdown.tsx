@@ -15,18 +15,30 @@ export default function QuizDropdown() {
     return () => window.removeEventListener("touchstart", handleTouch);
   }, []);
 
-  const toggleOpen = () => setOpen((prev) => !prev);
+  const handleClick = () => {
+    if (isTouchDevice) {
+      setOpen((prev) => !prev);
+    }
+  };
+
+  const handleMouseEnter = () => {
+    if (!isTouchDevice) setOpen(true);
+  };
+
+  const handleMouseLeave = () => {
+    if (!isTouchDevice) setOpen(false);
+  };
+
   const close = () => setOpen(false);
-  const openHover = () => !isTouchDevice && setOpen(true);
 
   return (
     <div
       className="relative"
-      onMouseEnter={openHover}
-      onMouseLeave={close}
+      onMouseEnter={handleMouseEnter}
+      onMouseLeave={handleMouseLeave}
     >
       <motion.button
-        onClick={toggleOpen}
+        onClick={handleClick}
         whileHover={{ scale: 1.05 }}
         whileTap={{ scale: 0.95 }}
         className="bg-gradient-to-r from-amber-400 to-amber-500 text-black font-bold py-4 px-8 rounded-full shadow-xl flex items-center gap-2"

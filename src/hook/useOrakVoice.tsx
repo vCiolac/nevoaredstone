@@ -12,15 +12,24 @@ export function useOrakVoice(playCondition: boolean, isMuted: boolean, audioSrc?
     voice.current?.stop();
     voice.current?.unload();
 
-    voice.current = new Howl({
+    const sound = new Howl({
       src: [audioSrc],
-      volume: 0.50,
+      volume: 0,
     });
 
-    voice.current.play();
+    voice.current = sound;
+
+    sound.play();
+    sound.fade(0, 0.5, 200);
 
     return () => {
-      voice.current?.stop();
+      if (voice.current?.playing()) {
+        voice.current.fade(0.5, 0, 200);
+        setTimeout(() => {
+          voice.current?.stop();
+          voice.current?.unload();
+        }, 500);
+      }
     };
   }, [audioSrc, playCondition, isMuted]);
 }
