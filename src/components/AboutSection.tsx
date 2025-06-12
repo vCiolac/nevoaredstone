@@ -4,7 +4,7 @@ import { personagens } from "@/app/quiz/personagens";
 import { motion } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
-import { bebas, dmSerif } from "@/fonts/fonts";
+import { dmSerif } from "@/fonts/fonts";
 
 export default function AboutSection() {
   return (
