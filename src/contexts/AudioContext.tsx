@@ -2,7 +2,7 @@
 
 import { createContext, useContext, useEffect, useRef, useState } from "react";
 import { Howl } from "howler";
-import { OrakReactionType } from "@/app/quiz/questions";
+import { OrakReactionType } from "@/types/types";
 
 type AudioContextType = {
   playClick: () => void;
@@ -33,7 +33,7 @@ export const AudioProvider = ({ children }: { children: React.ReactNode }) => {
   useEffect(() => {
     bgSound.current = new Howl({
       src: ["/sounds/bg-music.mp3"],
-      volume: 0.2,
+      volume: 0.1,
       loop: true,
       onload: () => setCanPlay(true),
     });
@@ -98,8 +98,12 @@ export const AudioProvider = ({ children }: { children: React.ReactNode }) => {
   return (
     <AudioContext.Provider
       value={{
-        playClick: () => clickSound.current?.play(),
-        playResult: () => resultSound.current?.play(),
+        playClick: () => {
+          if (!isMuted) clickSound.current?.play();
+        },
+        playResult: () => {
+          if (!isMuted) resultSound.current?.play();
+        },
         playOrakReaction,
         isMuted,
         toggleMute,

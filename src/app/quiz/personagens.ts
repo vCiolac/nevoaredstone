@@ -1,4 +1,4 @@
-import type { Character } from "./questions";
+import { Character } from "@/types/types";
 
 export type PersonagemData = {
   nome: string;
