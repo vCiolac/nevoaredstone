@@ -2,7 +2,7 @@
 
 import { createContext, useContext, useEffect, useRef, useState } from "react";
 import { Howl } from "howler";
-import { OrakReactionType } from "@/components/OrakCharacter";
+import { OrakReactionType } from "@/app/quiz/questions";
 
 type AudioContextType = {
   playClick: () => void;
@@ -23,9 +23,11 @@ export const AudioProvider = ({ children }: { children: React.ReactNode }) => {
   const clickSound = useRef<Howl | null>(null);
   const resultSound = useRef<Howl | null>(null);
   const orakSounds = useRef<Record<OrakReactionType, Howl>>({
-    normal: new Howl({ src: ["/sounds/orak-normal.mp3"], volume: 0.6 }),
-    happy: new Howl({ src: ["/sounds/orak-happy.mp3"], volume: 0.6 }),
-    sad: new Howl({ src: ["/sounds/orak-sad.mp3"], volume: 0.6 }),
+    happy: new Howl({ src: ["/sounds/orak/happy.mp3"], volume: 0.6 }),
+    sad: new Howl({ src: ["/sounds/orak/sad.mp3"], volume: 0.6 }),
+    angry: new Howl({ src: ["/sounds/orak/angry.mp3"], volume: 0.6 }),
+    thoughtful: new Howl({ src: ["/sounds/orak/thoughtful.mp3"], volume: 0.6 }),
+    intrigued: new Howl({ src: ["/sounds/orak/intrigued.mp3"], volume: 0.6 }),
   });
 
   useEffect(() => {

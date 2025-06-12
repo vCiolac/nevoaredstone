@@ -56,6 +56,7 @@ export default function AboutSection() {
                 src={p.imagem}
                 alt={`Ícone ${p.nome}`}
                 fill
+                sizes="(max-width: 80px) 80px, (max-width: 120px) 120px, 100px"
                 className="object-cover object-top"
               />
             </div>

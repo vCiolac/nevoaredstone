@@ -30,7 +30,7 @@ export default function ParallaxLayer({
       setScaledW(w);
       setScaledH(h);
 
-      const needed = Math.ceil(window.innerWidth / w) + 2;
+      const needed = Math.ceil(window.innerWidth / w / 4) + 1;
       setCopyCount(needed);
     };
   }, [src]);
