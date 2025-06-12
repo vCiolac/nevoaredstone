@@ -92,8 +92,8 @@ export default function QuizPage() {
 
   if (view === "intro") {
     return (
-      <main className="min-h-screen flex items-center justify-center px-6 py-12">
-        <motion.div className="bg-black/90 p-10 rounded-2xl text-white text-center">
+      <main className="h-screen flex items-center justify-center px-6 py-12">
+        <motion.div className="bg-black/90 p-10 rounded-2xl text-white text-center mt-17">
           <Image
             src="/images/orak/orak-normal.png"
             alt="Orak"

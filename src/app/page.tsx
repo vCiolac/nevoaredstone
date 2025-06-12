@@ -24,12 +24,12 @@ export default function Home() {
   return (
     <main className="pt-24">
       <section id="inicio" className="min-h-screen flex flex-col items-center justify-center px-6 text-center text-white">
-        <div className="w-full mx-auto flex flex-col items-center mb-4">
+        <div className="w-[80%] mx-auto flex flex-col items-center mb-4">
           <motion.h1
             initial={{ scale: 0.9, opacity: 0 }}
             animate={{ scale: 1, opacity: 1 }}
             transition={{ duration: 0.8 }}
-            className="text-3xl md:text-5xl font-extrabold mb-4"
+            className="text-4xl md:text-5xl font-extrabold mb-4"
           >
             Descubra seu lugar no mundo da Névoa Redstone
           </motion.h1>
@@ -38,7 +38,7 @@ export default function Home() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.5, duration: 0.8 }}
-            className="text-md md:text-lg max-w-2xl mb-8"
+            className="text-lg md:text-lg max-w-2xl mb-8"
           >
             Encare os desafios de um universo mágico e descubra qual personagem, instrumento ou poder vibra com sua essência.
           </motion.p>
