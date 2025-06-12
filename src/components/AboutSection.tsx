@@ -4,6 +4,7 @@ import { personagens } from "@/app/quiz/personagens";
 import { motion } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
+import { bebas, dmSerif } from "@/fonts/fonts";
 
 export default function AboutSection() {
   return (
@@ -19,7 +20,7 @@ export default function AboutSection() {
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 1 }}
-        className="text-4xl md:text-6xl font-bold mb-8 z-10 relative"
+        className={`${dmSerif.className} text-4xl md:text-6xl font-bold mb-8 z-10 relative`}
       >
         Névoa Redstone: Um Universo Multimídia
       </motion.h2>
