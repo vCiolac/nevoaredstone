@@ -13,5 +13,11 @@ export function calcularResultado(respostas: Option[]): Character {
     }
   });
 
-  return Object.entries(score).sort((a, b) => b[1] - a[1])[0][0] as Character;
+  const maxScore = Math.max(...Object.values(score));
+  const empatados = Object.entries(score)
+    .filter(([, value]) => value === maxScore)
+    .map(([key]) => key as Character);
+
+  const escolhido = empatados[Math.floor(Math.random() * empatados.length)];
+  return escolhido;
 }

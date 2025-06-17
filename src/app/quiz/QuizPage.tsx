@@ -1,4 +1,3 @@
-
 "use client";
 
 import { useState } from "react";
@@ -6,6 +5,7 @@ import { useSearchParams } from "next/navigation";
 import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
+import { Info } from "lucide-react";
 
 import { instrumentQuestions } from "./questions-instrumento";
 import { characterQuestions } from "./questions-personagens";
@@ -18,6 +18,8 @@ import OrakReaction from "@/components/OrakReaction";
 import QuizQuestion from "@/components/QuizQuestion";
 import { Option } from "@/types/types";
 import { useOrakVoice } from "@/hook/useOrakVoice";
+import ModalPontuacao from "@/components/ModalPontuacao";
+import type { Character } from "@/types/types";
 
 export default function QuizPage() {
   const searchParams = useSearchParams();
@@ -32,6 +34,7 @@ export default function QuizPage() {
   const [view, setView] = useState<
     "intro" | "question" | "reaction" | "final-reaction" | "result"
   >("intro");
+  const [pontuacaoOpen, setPontuacaoOpen] = useState(false);
 
   const { playClick, playResult, playOrakReaction, isMuted } = useAudio();
 
@@ -182,7 +185,17 @@ export default function QuizPage() {
 
   return (
     <main className="min-h-screen flex items-center justify-center px-6 py-12">
-      <motion.div className="bg-black/80 p-8 rounded-2xl max-w-4xl text-white flex flex-col md:flex-row gap-6">
+      <motion.div className="bg-black/80 p-8 rounded-2xl max-w-4xl text-white flex flex-col md:flex-row gap-6 w-full relative">
+        <button
+          className="fixed top-20 right-8 z-50 flex items-center gap-1 bg-zinc-800/80 hover:bg-yellow-900/70 text-yellow-400 px-3 py-2 rounded-lg shadow transition-colors"
+          onClick={() => setPontuacaoOpen(true)}
+          title="Ver pontuação atual"
+          style={{ pointerEvents: 'auto' }}
+        >
+          <Info size={18} />
+          <span className="hidden md:inline">Pontuação</span>
+        </button>
+
         <div className="w-full md:w-1/3 flex flex-col items-center">
           {(view !== "reaction" || currentOption) && (
             <Image
@@ -216,6 +229,38 @@ export default function QuizPage() {
           </div>
         </div>
       </motion.div>
+
+      <ModalPontuacao open={pontuacaoOpen} onClose={() => setPontuacaoOpen(false)}>
+        <h3 className="text-lg font-bold mb-2 text-amber-500 text-center">Pontuação</h3>
+        <table className="w-full text-sm border-separate border-spacing-y-1">
+          <thead>
+            <tr className="text-zinc-300">
+              <th className="text-left px-2 text-amber-600">Personagem</th>
+              <th className="text-right px-2 text-amber-600">Pontos</th>
+            </tr>
+          </thead>
+          <tbody>
+            {Object.keys(resultados).map((nome) => {
+              const nomePersonagem = nome as keyof typeof resultados;
+              const nomeCharacter = nome as Character;
+              let pontos = 0;
+              respostas.forEach((opcao) => {
+                pontos += opcao.points[nomeCharacter] || 0;
+              });
+              let ganhouPonto = false;
+              if (currentOption && currentOption.points[nomeCharacter]) {
+                ganhouPonto = true;
+              }
+              return (
+                <tr key={nome} className={ganhouPonto ? "bg-yellow-900/40 font-bold" : ""}>
+                  <td className="text-left px-2 py-1">{resultados[nomePersonagem].nome || nome}</td>
+                  <td className="text-right px-2 py-1 text-amber-400">{pontos}</td>
+                </tr>
+              );
+            })}
+          </tbody>
+        </table>
+      </ModalPontuacao>
     </main>
   );
 }
