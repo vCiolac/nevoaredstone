@@ -76,20 +76,20 @@ export default function QuizPage() {
     ? {
       title: "Orak, o Narrador",
       description: "Feche os olhos... e ouça. Um som vibra em seu interior, esperando para ser revelado.",
-      button: "Descobrir meu instrumento mágico!"
-      // voice: "/sounds/orak/orak-intro-instrumento.mp3",
+      button: "Descobrir meu instrumento mágico!",
+      voice: "/sounds/orak/orak-intro-instrumentos.mpeg"
     }
     : {
       title: "Orak, o Narrador",
       description: "Saudações, viajante! Pronto para descobrir sua essência?",
       button: "Sim, vamos começar!",
-      voice: "/sounds/orak/orak-intro-personagem.mp3",
+      voice: "/sounds/orak/orak-intro-personagem.mp3"
     };
 
   const finalReaction = quizType === "instrumento"
     ? {
       phrase: "Hm… terminei de afinar sua vibração mágica. Está pronto para ouvir qual instrumento ecoa sua alma?",
-      // voice: "/sounds/orak/orak-final-instrumento.mp3"
+      voice: "/sounds/orak/orak-final-instrumentos.mpeg"
     }
     : {
       phrase: "Hm… terminei de traçar seu mapa astral cósmico. As constelações se alinharam. Pronto para ver quem você realmente é?",
